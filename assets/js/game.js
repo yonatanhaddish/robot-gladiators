@@ -6,8 +6,13 @@ var playerMoney= 10;
 console.log(playerName, playerHealth, playerAttack);
 
 var enemyNames= ["Roberto", "Amy Android", "Robo Trumble"];
-var enemyHealth= 50;
+var enemyHealth= Math.floor(Math.random()*21)+41;
 var enemyAttack= 12;
+
+var randomNumber= function() {
+    var value= Math.floor(Math.random()*21)+40;
+    return value;
+}
 
 
 var fight= function(enemyName) {
@@ -18,8 +23,8 @@ var fight= function(enemyName) {
         var confirmSkip= window.confirm("Are you sure you would like to quit?");
         
         if (confirmSkip){
-             window.alert( playerName + " has decided to skip this fight with "+ enemyName);
-            playerMoney= playerMoney-10;
+            window.alert( playerName + " has decided to skip this fight with");
+            playerMoney= Math.max(0, playerMoney-10);
             console.log("playerMoney", playerMoney);
             break;
         }
@@ -29,7 +34,10 @@ var fight= function(enemyName) {
     }    
 
     else if (promptFight === "fight" || promptFight === "FIGHT") {
-        enemyHealth= enemyHealth-playerAttack;
+
+        var damage= randomNumber(playerAttack-3, playerAttack);
+        enemyHealth= Math.max(0, enemyHealth-damage);
+
         console.log(playerName + " attacked " + enemyName +"." + enemyName + " has now " + enemyHealth + " health remaining ")
 
         if (enemyHealth <=0){
@@ -40,8 +48,10 @@ var fight= function(enemyName) {
         else {
             window.alert(enemyName + " still has "+ enemyHealth + " health left.");
         }
-    
-        playerHealth= playerHealth-enemyAttack;
+
+        var damage= randomNumber(enemyAttack-3,enemyAttack);
+        playerHealth= Math.max(0, playerHealth-damage);
+
         console.log(enemyName + " attacked " + playerName + "." + playerName + " has now " + playerHealth + " health remaining")
     
         if (playerHealth <=0){
@@ -57,7 +67,7 @@ var fight= function(enemyName) {
     }
     
        
-}
+};
 
 
 var startGame= function() {
@@ -88,7 +98,7 @@ var startGame= function() {
         }
 
     endGame();
-    }
+    };
    
 };
 
@@ -102,7 +112,7 @@ var endGame= function() {
         window.alert("You've lost your robot in battle.");
     }
 
-var playAgainConfirm= window.confirm("Would you like to play again");
+var playAgainConfirm= window.confirm("Would you like to play again?");
     if (playAgainConfirm) {
      startGame();
     }
@@ -154,10 +164,12 @@ var shop= function(){
     }
 
     
-}
-
-
-
+};
 startGame();
+
+
+
+
+
 
 
