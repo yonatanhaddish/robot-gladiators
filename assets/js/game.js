@@ -67,9 +67,9 @@ var startGame = function() {
   
         // if yes (true), leave fight
         if (confirmSkip) {
-          window.alert(playerName + ' has decided to skip this fight. Goodbye!');
+          window.alert(playerInfo.name + ' has decided to skip this fight. Goodbye!');
           // subtract money from playerMoney for skipping
-          playerMoney = playerMoney - 10;
+          playerInfo.money = playerInfo.money - 10;
           shop();
           break;
         }
@@ -176,8 +176,18 @@ var startGame = function() {
   /* GAME INFORMATION / VARIABLES */
   
   // player information
+  var getPlayerName= function() {
+      var name= "";
+
+      while (name==="" || name=== null) {
+          name= prompt("What is your robot's name?");
+      }
+
+      console.log("Your robot's name is"+ name);
+      return name;
+  };
   var playerInfo = {
-    name: window.prompt("What is your robot's name?"),
+    name: getPlayerName(),
     health: 100,
     attack: 10,
     money: 10,
