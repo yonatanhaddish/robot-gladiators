@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# robot-gladiators
-=======
 # Robot Gladiators
 
 ## Description
@@ -32,4 +29,3 @@ If you have any questions about his project, please contact me directly at yonih
 
 
 
->>>>>>> develop
